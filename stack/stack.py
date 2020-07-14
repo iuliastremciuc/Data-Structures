@@ -11,6 +11,9 @@ return elements in Last In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
+
+### Implemented the Stack class using an array as the underlying storage structure
+
 # class Stack:
 #     def __init__(self):
 #         self.size = []
@@ -42,22 +45,28 @@ return elements in Last In First Out order.
 # s.pop()
 # print(len(s))
 
+### Implemented the Stack class, this time using the linked list implementation as the underlying storage structure.
 
 class Stack:
     def __init__(self):
-        self.size = LinkedList()
-        # self.storage = ?
+        self.size = 0
+        self.storage = LinkedList()
+        # self.top = None
 
     def __len__(self):
-        return len(self.head)
-
-
+        if self.size <= 0:
+            return 0
+        else:
+            return self.size
     def push(self, value):
-        self.size.add_to_tail(value)
-        
+        self.size +=1
+        self.storage.add_to_tail(value)
+        # self.top = self.storage.tail
 
     def pop(self):
-        return self.size.remove_tail()
+        self.size -=1
+        return self.storage.remove_tail()
+
 
 s = Stack()
 s.push(100)
