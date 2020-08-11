@@ -62,33 +62,32 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node.
     """
-    def remove_from_head(self):
+    # def remove_from_head(self):
         
-        # store the value of the head
-        head_value = self.head
-        # decrement the length of the DLL
-        self.length -= 1        
-        # delete the head
-            # if head.next is not None
-        if head_value.next != None:
-                # set head.next's prev to None
-            head_value.next.prev  = head_value.prev
-               # else (if head.next is None)
-        if head_value.next is None:
-                # set head to None
-            self.head = None
-                # set tail to None
-            self.tail = None
+    #     # store the value of the head
+    #     head_value = self.head
+    #     # decrement the length of the DLL
+    #     self.length -= 1        
+    #     # delete the head
+    #         # if head.next is not None
+    #     if head_value.next != None:
+    #             # set head.next's prev to None
+    #         head_value.next.prev  = head_value.prev
+    #            # else (if head.next is None)
+    #     if head_value.next is None:
+    #             # set head to None
+    #         self.head = None
+    #             # set tail to None
+    #         self.tail = None
 
-        return head_value.value
+    #     return head_value.value
     
-    # def remove_from_tail(self):
-    #     value = self.head.value
-    #     self.delete(self.head)
-    #     return value
-
-   
-            
+    
+    def remove_from_head(self):
+        value = self.head.value
+        self.delete(self.head)
+        return value
+                
     """
     Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -122,34 +121,34 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node.
     """
-    def remove_from_tail(self):
-        
-        # store the value of the tail
-        new_node = self.tail
-        # decrement the length of the DLL
-        self.length -= 1
-        # delete the tail
-            # if tail.prev is not None
-        if new_node.prev != None:
-                # set tail.prev's next to None
-            new_node.prev.next = new_node.next
-    
-            # else (if tail.prev is None)
-        if new_node.prev is None:
-
-                # sed head to None
-            self.head = None
-
-                # set tail to None
-            self.tail = None
-
-        return new_node.value
-
-
     # def remove_from_tail(self):
-    #     value = self.tail.value
-    #     self.delete(self.tail)
-    #     return value
+        
+    #     # store the value of the tail
+    #     new_node = self.tail
+    #     # decrement the length of the DLL
+    #     self.length -= 1
+    #     # delete the tail
+    #         # if tail.prev is not None
+    #     if new_node.prev != None:
+    #             # set tail.prev's next to None
+    #         new_node.prev.next = new_node.next
+    
+    #         # else (if tail.prev is None)
+    #     if new_node.prev is None:
+
+    #             # sed head to None
+    #         self.head = None
+
+    #             # set tail to None
+    #         self.tail = None
+
+    #     return new_node.value
+
+
+    def remove_from_tail(self):
+        value = self.tail.value
+        self.delete(self.tail)
+        return value
             
     """
     Removes the input node from its current spot in the 
@@ -216,10 +215,10 @@ class DoublyLinkedList:
             self.tail = None
         elif self.head == node:
             self.head = node.next
-            node.delete()
+            
         elif self.tail == node:
             self.tail = node.prev
-            node.delete()
+           
         else:
             node.delete()
 
