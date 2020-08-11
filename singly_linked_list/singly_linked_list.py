@@ -17,15 +17,24 @@ class Node:
         # reference to the next node in the list
         self.next_node = next_node
 
+    # method to get the value of the node
     def get_value(self):
         return self.value
 
+    # mothod to get the node's 'next_node'
     def get_next(self):
         return self.next_node
-
+    
+    # method to update the node's 'next_node' to the input node
     def set_next(self, new_next):
         # set this node's next_node reference to the passed in node
         self.next_node = new_next
+
+# [5, 7, 18, 22]
+# ll = Node(5)
+# ll.set_next(Node(7))
+# ll.next_node.set_next(Node(18))
+# ll.next_node.next_node.set_next(Node(22))
 
 class LinkedList:
     """
@@ -83,22 +92,27 @@ class LinkedList:
         return value
 
     def remove_tail(self):
+        # check if list is empty
         if not self.head:
             return None
         
+        # check id the linked list has only one node             
         if self.head is self.tail:
+            # store the node's value we are going to remove
             value = self.head.get_value()
             self.head = None
             self.tail = None
             return value
-        
-        current = self.head
 
+        # if ll has more than one Node        
+        current = self.head
+        # we need to set 'self.tail' to the second-to-last Node 
         while current.get_next() is not self.tail:
             current = current.get_next()
-
+        # store the last Node's value in another variable so we can return it
         value = self.tail.get_value()
         self.tail = current
+        # set the new tail's 'next_node' to None
         self.tail.set_next(None)
         return value
 
