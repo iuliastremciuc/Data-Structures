@@ -90,11 +90,52 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, cb):
-        cb(self.value)
-        if self.right: 
-            self.right.for_each(cb)
-        if self.left:
-            self.left.for_each(cb)
+        # ###### Recursive
+        # # call cb on self.value
+        # cb(self.value)
+        # # check if there is left subtree
+        # if self.left:
+        #     # call 'for_each' in the left subtree passing in the cb
+        #     self.left.for_each(cb)
+        # # check if there is right subtree
+        # if self.right: 
+        #     # call 'for_each' in the right subtree passing in the cb
+        #     self.right.for_each(cb)
+
+        # ####### Depth-First Iterative
+        # # use a stack to achive the same ordering
+        # stack = []
+        # # add the root node to our stack
+        # stack.append(self)
+
+        # # cotinue popping from our stack so long as there are nodes in it
+        # while len(stack) > 0:
+        #     current_node = stack.pop()
+
+        #     # check if this node has children
+        #     if current_node.right:
+        #         stack.append(current_node.right)
+        #     if current_node.left:
+        #         stack.append(current_node.left)
+
+        #     cb(current_node.value)
+        
+        ######## Breadth-First traversal
+        from collections import deque
+
+        q = deque()
+        q.append(self)
+        while len(q) > 0:
+            current_node = q.pop()
+
+            if current_node.left:
+                q.append(current_node.left)
+            if current_node.right:
+                q.append(current_node.right)
+
+            cb(current_node.value)
+
+
         # pass
 
     # Part 2 -----------------------
@@ -111,7 +152,7 @@ class BSTNode:
         # check if we can "move left"
         if self.left:
             self.left.in_order_print(node)
-        # visit the node by rinting its value
+        # visit the node by wrinting its value
         print(self.value)
         # check if we can "move right"
         if self.right:
@@ -148,7 +189,7 @@ class BSTNode:
             if q.left:
                 queue.enqueue(q.left)
             if q.right:
-                queue .enqueue(q.right)
+                queue.enqueue(q.right)
             # place current item's right node in queue
 
 
